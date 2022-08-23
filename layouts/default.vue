@@ -1,14 +1,11 @@
-<template>
-  <v-app dark>
-    <v-app-bar :clipped-left="clipped" fixed app>
-      <v-toolbar-title>フォトコン 最終更新 {{lastUpdate}}</v-toolbar-title>
-    </v-app-bar>
-    <v-main>
-      <v-container fluid>
-        <Nuxt />
-      </v-container>
-    </v-main>
-  </v-app>
+<template lang="pug">
+v-app(dark)
+  v-app-bar(fixed app)
+    v-toolbar-title フォトコン 最終更新 {{lastUpdate}}
+  v-main
+    v-container(fluid)
+      Nuxt
+
 </template>
 
 <script>

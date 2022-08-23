@@ -22,10 +22,10 @@
       <v-card-text class="text--primary">
         <p> {{t.text}} </p>
         <div v-for="(m, i) in t.extended_entities?.media" :key="i" class="pt-1">
-          <v-img :src="m.media_url"></v-img>
+          <v-img :src="m.media_url" @click="openModal(m.media_url)"></v-img>
         </div>
         <div v-for="(m, i) in t.extended_tweet?.extended_entities?.media" :key="i" class="pt-1">
-          <v-img :src="m.media_url"></v-img>
+          <v-img :src="m.media_url" @click="openModal(m.media_url)"></v-img>
         </div>
       </v-card-text>
       <v-card-actions>
@@ -33,15 +33,20 @@
           <v-icon>{{ button.icon }}</v-icon>
         </v-btn> -->
         <v-spacer />
-        <span class="body-2 font-weight-light">{{ t.created_at }}</span>
+        <span class="body-2 font-weight-light">{{ new Date(t.created_at).toLocaleDateString() }} {{ new Date(t.created_at).toLocaleTimeString() }}</span>
       </v-card-actions>
     </v-card>
   </div>
 </template>
 
 <script>
+import {mapMutations} from "vuex";
+
 export default {
   name: "TwitterCard",
-  props:["t"]
+  props:["t"],
+  methods:{
+    ...mapMutations(["openModal"])
+  }
 }
 </script>
