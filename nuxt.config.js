@@ -1,12 +1,22 @@
 import colors from 'vuetify/es5/util/colors'
+const PRODUCTION_BASE_PATH = '/photo-contest-front/';
 
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
-  buildDir: 'docs',
+  // buildDir: 'build',
+  // dir: "docs",
+  generate: {
+    dir: 'docs'
+  },
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
+  router: {
+    base: process.env.NODE_ENV === 'production'
+      ? PRODUCTION_BASE_PATH
+      : '/'
+  },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
